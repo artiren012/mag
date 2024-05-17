@@ -6,11 +6,12 @@ app.set('view engine', 'html');
 nunjucks.configure('./views', { express: app });
 
 app.listen(8080, () => {
-    console.log('Run at localhost:80');
+    console.log('Run at localhost:8080');
 });
 
 app.get('/', (req, res) => {
+    console.log(req.query.q);
     res.render('index.html', {
-       title: (req.query.q != "") ? req.query.q : 'Hello World!' 
+       title: (req.query.q != undefined) ? req.query.q : 'Hello World!' 
     });
 });
