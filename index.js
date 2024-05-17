@@ -10,7 +10,6 @@ app.listen(80, () => {
 });
 
 app.get('/', (req, res) => {
-    console.log(req.query.q);
     res.render('index.html', {
        title: (req.query.q != undefined) ? req.query.q : 'Hello World!' 
     });
