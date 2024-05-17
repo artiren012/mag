@@ -5,7 +5,7 @@ const app = express();
 app.set('view engine', 'html');
 nunjucks.configure('./views', { express: app });
 
-app.listen(8080, () => {
+app.listen(80, () => {
     console.log('Run at localhost:8080');
 });
 
