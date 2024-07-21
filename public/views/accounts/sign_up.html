@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>artiren012</title>
+        <meta name="description" content="main page">
+        <script src="https://kit.fontawesome.com/067f3db4d7.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/assets/css/index.css">
+        <script type="text/javascript" src="/assets/js/easterEgg.js"></script>
+        <style>
+            body {
+                text-align: center;
+            }
+            header h1 {
+                margin: 0;
+            }
+            header a {
+                font-size: large;
+                color: white;
+            }
+            header a:hover {
+                color: lightblue;
+            }
+            header a:active {
+                color: darkblue;
+            }
+            main {
+                display: flex;
+                justify-content: center;
+            }
+            table {
+                font-size: large;
+            }
+            h3 {
+                color: cornflowerblue;
+            }
+            span {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>회원가입</h1>
+            <p><a href="/">메인</a> | <a href="/accounts/sign_in">로그인</a></p>
+        </header>
+        <main>
+            <section id="sign_up">
+                <p><form action="./sign_up" method="post">
+                    <table>
+                        <!-- 로그인 정보 -->
+                        <tr>
+                            <td colspan="2">
+                                <h3>로그인 정보</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>아이디</td>
+                            <td><input name="id" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span>{{ id_error }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호</td>
+                            <td><input name="password" type="password"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span>{{ password_error }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호 확인</td>
+                            <td colspan="2">
+                                <input name="password_check" type="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span>{{ password_check_error }}</span>
+                            </td>
+                        </tr>
+                        <tr style="height: 16px;"></tr>
+                        <!-- 사용자 정보 -->
+                        <tr>
+                            <td colspan="2">
+                                <h3>사용자 정보</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>사용자명</td>
+                            <td><input name="username" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>이메일</td>
+                            <td><input name="email" type="email"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span>{{ email_error }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="회원가입">
+                            </td>
+                        </tr>
+                    </table>
+                </form></p>
+            </section>
+        </main>
+    </body>
+</html>
