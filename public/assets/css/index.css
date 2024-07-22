@@ -12,6 +12,7 @@
 body {
     background-color: cornflowerblue;
     margin: 0;
+    word-wrap: break-word;
 }
 
 header {

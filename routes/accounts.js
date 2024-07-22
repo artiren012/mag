@@ -12,6 +12,23 @@ router.get('/', (req, res) => {
     }
 });
 
+router.post('/modify', (req, res) => {
+    const db = new sqlite.Database('./database/database.db');
+    db.run(`UPDATE user SET name="${req.body.username}", desc="${req.body.description}" WHERE id="${req.session.uid}";`, (err) => {
+        if (err) {
+            console.log(err);
+            db.close();
+            return res.status(500).render('error.html', {
+                error_code: '500 Internal Error', error_message: 'Internal Error'
+            });
+        }
+        console.log(req.body.description);
+        req.session.username = req.body.username;
+        res.redirect(`/user/${req.session.username}`);
+    });
+    db.close();
+});
+
 router.get('/sign_in', (req, res) => {
     if (req.session.username != undefined) return res.redirect(`/user/${req.session.username}`);
     res.render('accounts/sign_in.html');
@@ -29,6 +46,7 @@ router.post('/sign_in', (req, res) => {
         const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
         if (row == undefined) return res.send('accounts/sign_in', { password_error: '아이디 또는 비밀번호가 일치하지 않습니다.' });
         if (row.password === password) {
+            req.session.uid = row.id;
             req.session.username = row.name;
             req.session.isLogined = true;
             res.redirect(`/user/${row.name}`);
@@ -36,6 +54,7 @@ router.post('/sign_in', (req, res) => {
             res.render('accounts/sign_in', { password_error: '아이디 또는 비밀번호가 일치하지 않습니다.' });
         }
     });
+    db.close();
 });
 
 router.get('/sign_up', (req, res) => {
@@ -76,7 +95,8 @@ router.post('/sign_up', (req, res) => {
                             error_code: '500 Internal Error', error_message: 'Internal Error'
                         });
                     }
-                    req.session.username = row.name;
+                    req.session.uid = req.body.id;
+                    req.session.username = req.body.name;
                     req.session.isLogined = true;
                     res.redirect(`/user/${row.name}`);
                 });
