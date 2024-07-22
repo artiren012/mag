@@ -44,7 +44,7 @@ router.post('/sign_in', (req, res) => {
             });
         }
         const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
-        if (row == undefined) return res.send('accounts/sign_in', { password_error: '아이디 또는 비밀번호가 일치하지 않습니다.' });
+        if (row == undefined) return res.render('accounts/sign_in', { password_error: '아이디 또는 비밀번호가 일치하지 않습니다.' });
         if (row.password === password) {
             req.session.uid = row.id;
             req.session.username = row.name;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>포스팅</title>
+        <meta name="description" content="main page">
+        <script src="https://kit.fontawesome.com/067f3db4d7.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/assets/css/index.css">
+        <script type="text/javascript" src="/assets/js/easterEgg.js"></script>
+    </head>
+    <body>
+        <header>
+            <img id="pfp" src="https://avatars.githubusercontent.com/u/39212405">
+            <h1>{{ username }}</h1>
+            <span></span>
+            <p id="desc">
+                {% for line in description_display %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+        </header>
+        <main>
+            <section id="posting">
+                <h2>포스팅</h2>
+                <form action="./posting" method="post">
+                    <p>
+                        <p>제목</p>
+                        <input name="title" type="text" value="">
+                    </p>
+                    <p>
+                        <p>내용</p>
+                        <textarea name="content"></textarea>
+                    </p>
+                    <input type="submit" value="저장">
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>프로필 수정</title>
+        <meta name="description" content="main page">
+        <script src="https://kit.fontawesome.com/067f3db4d7.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/assets/css/index.css">
+        <script type="text/javascript" src="/assets/js/easterEgg.js"></script>
+    </head>
+    <body>
+        <header>
+            <img id="pfp" src="https://avatars.githubusercontent.com/u/39212405">
+            <h1>{{ username }}</h1>
+            <span></span>
+            <p id="desc">
+                {% for line in description_display %}
+                    {{ line }}<br>
+                {% endfor %}
+            </p>
+        </header>
+        <main>
+            <section id="modify">
+                <h2>프로필 수정</h2>
+                <form action="/accounts/modify" method="post">
+                    <p>
+                        <p>사용자명</p>
+                        <input name="username" type="text" value="{{ username }}">
+                    </p>
+                    <p>
+                        <p>소개</p>
+                        <textarea name="description">{{ description }}</textarea>
+                    </p>
+                    <input type="submit" value="저장">
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
